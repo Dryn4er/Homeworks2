@@ -37,7 +37,7 @@ class Product(MixinLog, OriginProduct):
         super().__init__()
 
     def __str__(self):
-        return f"{self.name},{self.__price} руб. Остаток: {self.quantity}"
+        return f"{self.name},{self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
         return (self.price * self.quantity) + (other.price * other.quantity)
@@ -52,7 +52,7 @@ class Product(MixinLog, OriginProduct):
 
     @property
     def price(self):
-        # return f"{self.name}, {self.description}, {self.price}, {self.quantity}"
+#        return f"{self.name}, {self.description}, {self.price}, {self.quantity}"
         return self.__price
 
     @price.setter

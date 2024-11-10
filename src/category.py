@@ -57,7 +57,7 @@ class Category:
     def products(self) -> str:
         product_str = ""
         for i in self.__products:
-            product_str += f"{str(i)}\n"
+            product_str += f"{i.name},{i.price} руб. Остаток: {i.quantity} шт."
         return product_str
 
     def average_price(self, product: Product) -> Any:
