@@ -21,8 +21,8 @@ class Product(MixinLog, OriginProduct):
     def __init__(self, name, description, price, quantity):
         # super().__init__(name, description, price)
 
-        ## def __init__(self, name, description, price, quantity):
-        ##     super().__init__(self.__repr__)
+        # def __init__(self, name, description, price, quantity):
+        #     super().__init__(self.__repr__)
 
         self.name = name
         self.description = description
@@ -109,7 +109,7 @@ class ShellScriptError(Exception):
     """Общий класс исключения для скриптов"""
 
     def __init__(self, *args, **kwargs):
-        self.message = args[0] if args else 'Неизвестная ошибка скрипта.'
+        self.message = args[0] if args else "Неизвестная ошибка скрипта."
 
     def __str__(self):
         return self.message
@@ -119,11 +119,11 @@ class ShellScriptEmpty(ShellScriptError):
     """Класс исключения при отсутствии кода скрипта"""
 
     def __init__(self, *args, **kwargs):
-        self.message = args[0] if args else 'Файл пустой.'
+        self.message = args[0] if args else "Файл пустой."
 
 
 class ShellScriptShebang(ShellScriptError):
     """Класс исключения при отсутствии shebang"""
 
     def __init__(self, *args, **kwargs):
-        self.message = args[0] if args else 'В файле отсутствует shebang.'
+        self.message = args[0] if args else "В файле отсутствует shebang."

@@ -7,24 +7,24 @@ class AveragePrice(Exception):
     """Общий класс исключения для скриптов"""
 
     def __init__(self, *args, **kwargs):
-        self.message = args[0] if args else 'Неизвестная ошибка скрипта.'
+        self.message = args[0] if args else "Неизвестная ошибка скрипта."
 
     def __str__(self):
         return self.message
 
 
 class ThereIsNoProduct(AveragePrice):
-    """Класс исключения при отсутствии товара """
+    """Класс исключения при отсутствии товара"""
 
     def __init__(self, *args, **kwargs):
-        self.message = args[0] if args else 'Товар отсутвует.'
+        self.message = args[0] if args else "Товар отсутвует."
 
 
 class IncorrectAmount(AveragePrice):
-    """Класс исключения при отсутствии товара """
+    """Класс исключения при отсутствии товара"""
 
     def __init__(self, *args, **kwargs):
-        self.message = args[0] if args else ''
+        self.message = args[0] if args else ""
 
 
 class Category:
