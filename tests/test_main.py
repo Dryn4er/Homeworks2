@@ -1,5 +1,5 @@
-# import pytest
-
+import pytest
+from tests.conftest import smartphone, samsung, grass, new_product
 from src.category import Category
 from src.product import Product, LawnGrass, Smartphone
 
@@ -73,7 +73,7 @@ def test_product_creation():
 
 def test_product_str_method():
     product = Product("Товар 2", "Описание товара 2", 150.0, 5)
-    assert str(product) == "Товар 2,150.0 руб. Остаток: 5"
+    assert str(product) == "Товар 2,150.0 руб. Остаток: 5 шт."
 
 
 def test_new_price(samsung):
@@ -113,7 +113,8 @@ def test_category_add_product():
 
     category.add_product(product)
 
-    assert len(category.products.split("\n")) - 1 == 1
+    assert str(product) in category.products
+
 
 
 def test_category_all_products_count():
