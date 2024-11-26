@@ -52,7 +52,7 @@ class Product(MixinLog, OriginProduct):
 
     @property
     def price(self):
-#        return f"{self.name}, {self.description}, {self.price}, {self.quantity}"
+        #        return f"{self.name}, {self.description}, {self.price}, {self.quantity}"
         return self.__price
 
     @price.setter
@@ -72,17 +72,23 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
+        self.price = price
 
         efficiency: str
         model: str
         memory: int
         color: str
+        price: int
 
     def __add__(self, other):
-        if not isinstance(other, Smartphone):
-            raise TypeError("Складывать можно только объекты Smartphone")
-        return (self.price * self.quantity) + (other.price * other.quantity)
-        # return f"{self.name},{self.__price} руб. Остаток: {self.quantity}"
+        if type(other) is Smartphone:
+            return (self.price * self.quantity) + (other.price * other.quantity)
+        raise TypeError("Складывать можно только объекты Smartphone")
+
+
+#            raise TypeError("Складывать можно только объекты Smartphone")
+#        return (self.price * self.quantity) + (other.price * other.quantity)
+# return f"{self.name},{self.__price} руб. Остаток: {self.quantity}"
 
 
 class LawnGrass(Product):
@@ -93,16 +99,23 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
+        self.price = price
 
         country: str
         germination_period: str
         color: str
+        price: int
 
     def __add__(self, other):
-        if not isinstance(other, LawnGrass):
-            raise TypeError("Складывать можно только объекты LawnGrass")
-        return (self.price * self.quantity) + (other.price * other.quantity)
-        # return f"{self.name},{self.__price} руб. Остаток: {self.quantity}"
+        if type(other) is LawnGrass:
+            return (self.price * self.quantity) + (other.price * other.quantity)
+        raise TypeError("Складывать можно только объекты LawnGrass")
+
+
+#        if not isinstance(other, LawnGrass):
+#            raise TypeError("Складывать можно только объекты LawnGrass")
+#        return (self.price * self.quantity) + (other.price * other.quantity)
+# return f"{self.name},{self.__price} руб. Остаток: {self.quantity}"
 
 
 class ShellScriptError(Exception):
