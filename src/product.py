@@ -3,14 +3,14 @@ from abc import ABC, abstractmethod
 from src.mixin_log import MixinLog
 
 
-class OriginProduct(ABC):
+class BaseProduct(ABC):
 
     @abstractmethod
     def __init__(self):
         pass
 
 
-class Product(MixinLog, OriginProduct):
+class Product(MixinLog, BaseProduct):
     """Информация о свойтвах продуктах"""
 
     name: str

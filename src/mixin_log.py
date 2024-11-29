@@ -12,4 +12,4 @@ class MixinLog:
 #        MixinLog.__init__(self)  # напрямую обращаемся к родителю в инициализацию и отдаём себя, как объект
 
     def __repr__(self):
-        return f"{self.__class__.__name__} ({self.name}, {self.description}, {self.__price}, {self.quantity})"
+        return f"{self.__class__.__name__} ({self.name}, {self.description}, {self.price}, {self.quantity})"
