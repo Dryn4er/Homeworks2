@@ -77,8 +77,6 @@ def test_product_str_method():
 
 
 def test_new_price(samsung):
-    samsung.price = -100
-    assert samsung.price == 180000.0
     samsung.price = 100
     assert samsung.price == 100
     samsung.price = 1
@@ -140,3 +138,12 @@ def test_mixin_log(capsys):
 def test_zero_product(zero_product):
     with pytest.raises(AssertionError) as ex:
         assert zero_product == f'{ex}: Товар с нулевым количеством не может быть добавлен'
+
+@pytest.mark.parametrize(
+    'invalid_price', [0, -100], ids=['zero price', 'negative price']
+)
+def test_set_invalid_price(invalid_price):
+    with pytest.raises(AssertionError):
+        Product('test_name_1', "Описание товара 1", price=invalid_price, quantity=2)
+        assert invalid_price == "Товар с нулевым количеством не может быть добавлен"
+

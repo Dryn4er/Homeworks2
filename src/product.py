@@ -57,7 +57,7 @@ class Product(MixinLog, BaseProduct):
     @price.setter
     def price(self, new_prise: float):
         if new_prise <= 0:
-            print("Цена должна быть больше 0")
+            raise ValueError("Цена должна быть больше 0")
         else:
             self.__price = new_prise
 
