@@ -29,10 +29,9 @@ class Product(MixinLog, BaseProduct):
         self.__price = price
         try:
             self.quantity = quantity
-            raise ValueError
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         except ValueError as e:
-            print(e)
-            print("Товар с нулевым количеством не может быть добавлен")
+                print(str(e))
 
         super().__init__()
 

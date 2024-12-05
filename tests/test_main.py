@@ -136,3 +136,7 @@ def test_mixin_log(capsys):
     Product("a", "b", 1, 2)
     captured = capsys.readouterr()
     assert "Product (a, b, 1, 2)" in captured.out
+
+def test_zero_product(zero_product):
+    with pytest.raises(AssertionError) as ex:
+        assert zero_product == f'{ex}: Товар с нулевым количеством не может быть добавлен'
