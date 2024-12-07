@@ -135,15 +135,21 @@ def test_mixin_log(capsys):
     captured = capsys.readouterr()
     assert "Product (a, b, 1, 2)" in captured.out
 
-def test_zero_product(zero_product):
-    with pytest.raises(AssertionError) as ex:
-        assert zero_product == f'{ex}: Товар с нулевым количеством не может быть добавлен'
+
+@pytest.mark.parametrize(
+    'invalid_product', [0, -100], ids=['zero product', 'negative product']
+)
+def test_zero_product(invalid_product):
+    with pytest.raises(ValueError):
+        Product('test_name_1', "Описание товара 1", price=10000, quantity=invalid_product)
+        assert invalid_product == "Товар с нулевым количеством не может быть добавлен"
+
 
 @pytest.mark.parametrize(
     'invalid_price', [0, -100], ids=['zero price', 'negative price']
 )
 def test_set_invalid_price(invalid_price):
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         Product('test_name_1', "Описание товара 1", price=invalid_price, quantity=2)
-        assert invalid_price == "Товар с нулевым количеством не может быть добавлен"
+        assert invalid_price == "Цена должна быть больше 0"
 
